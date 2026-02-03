@@ -1,0 +1,102 @@
+/* ================ */
+/* TOTAL PORTEFEUILLE */
+/* ================ */
+
+h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+  color: #38bdf8;
+  margin: 40px 0;
+  padding: 20px;
+  background: #1e293b;
+  border-radius: 10px;
+  border: 2px solid #334155;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+h1::before {
+  content: '💰';
+  margin-right: 15px;
+  font-size: 2.5rem;
+}
+
+/* Alerte baleine - style simple */
+.whale-alert {
+  border-color: gold !important;
+  background: #1a202c !important;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { border-color: gold; }
+  50% { border-color: orange; }
+}
+
+/* ================ */
+/* BOUTON */
+/* ================ */
+
+button {
+  background: #6366f1;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
+  display: block;
+  margin: 20px auto 40px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #4f46e5;
+  transform: scale(1.05);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* ================ */
+/* GRILLE DE CARTES */
+/* ================ */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Version mobile */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    margin: 20px 10px;
+    padding: 15px;
+  }
+}
+
+/* Style pour quand il n'y a pas de cartes */
+.grid:empty {
+  text-align: center;
+  color: #94a3b8;
+  padding: 50px;
+  font-size: 1.2rem;
+}
