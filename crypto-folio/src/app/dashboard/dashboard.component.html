@@ -1,4 +1,14 @@
-<p>dashboard works!</p>
-<h1 [class.whale-alert]="crypto.isRich()">
-  {{ crypto.totalPortfolio() | currency:'EUR' }}
+<h1 [class.whale-alert]="isRich()">
+  {{ total() | currency:'EUR' }}
 </h1>
+
+<button (click)="crypto.simulateMarket()">Simuler Marché</button>
+
+<div class="grid">
+  @for (c of coins(); track c.id) {
+    <app-crypto-card
+      [coin]="coinSignal(c)"
+      [updateQuantity]="(amount) => crypto.updateQuantity(c.id, amount)">
+    </app-crypto-card>
+  }
+</div>

@@ -5,7 +5,7 @@
     <p>Quantité:{{coin.quantity | number: '1.1-4'}}</p>
     <p class="date">Derniere MAJ: {{coin.lastUpdate | date: 'HH-mm-ss'}}</p>
     <div class="actions">
-        <button (click)="updateQuantity.emit(+1)">Acheter</button>
-        <button (click)="updateQuantity.emit(-1)">Vendre</button>
+        <button (click)="onUpdateQuantity(+1)">Acheter</button>
+        <button (click)="onUpdateQuantity(-1)">Vendre</button>
     </div>
 </div>

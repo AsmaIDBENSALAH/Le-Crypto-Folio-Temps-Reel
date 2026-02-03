@@ -10,6 +10,9 @@ import { Coin } from '../models/crypto.model';
 export class CryptoCardComponent {
 coin= input.required<Coin>();
 
-updateQuantity= output<number>();
-
+  updateQuantity = output<number>(); // Output pour événements
+  
+  onUpdateQuantity(amount: number) {
+    this.updateQuantity.emit(amount);
+  }
 }

@@ -10,7 +10,7 @@ export class CryptoService {
     { id: 'sol', name: 'SOLANA', price: 400, quantity: 20, change24h: 0, lastUpdate: new Date() },
   ]);
 
-  //  LOGIC-03 
+ 
   totalPortfolio = computed(() =>
     this.coins().reduce(
       (sum, c) => sum + c.price * c.quantity,
@@ -18,7 +18,6 @@ export class CryptoService {
     )
   );
 
-  //  UX-04 : Alerte Baleine
   isRich = signal(false);
 
   constructor() {
@@ -29,30 +28,6 @@ export class CryptoService {
     });
   }
 
-  updateQuantity(id: string, amount: number): void {
-    this.coins.update(list =>
-      list.map(c =>
-        c.id === id
-          ? { ...c, quantity: c.quantity + amount }
-          : c
-      )
-    );
-  }
-
-  simulateMarket(): void {
-    this.coins.update(list => {
-      const now = new Date();
-
-      return list.map(c => {
-        const delta = (Math.random() * 10 - 5) / 100;
-        const newPrice = +(c.price * (1 + delta)).toFixed(2);
-    return next;
-    });
-  }
-}
-
-
-// update the qty of a specific crypto coin
   updateQuantity(id: string, amount: number): void {
     this.coins.update((list) => {
       return list.map((c) => {if (c.id === id) {
@@ -66,37 +41,23 @@ export class CryptoService {
     });
   }
 
-  // variation aléatoire ±5% 
-  simulateMarket(): void {
-    this.coins.update((list) => { 
-      const now = new Date();
-      const next = list.map((c) => {
-        // variation aléatoire de ±5%
-        const delta = (Math.random() * 10 - 5) / 100; 
-        const newPrice = +(c.price * (1 + delta)).toFixed(2);
-
-        // changement de 24h ~ approx..
-        const change24h = +(newPrice - c.price).toFixed(2);
+  simulateMarket() {
+    this.coins.update(list =>
+      list.map(c => {
+        const variation = (Math.random() * 10 - 5);
+        const newPrice = c.price * (1 + variation / 100);
 
         return {
           ...c,
           price: newPrice,
-          change24h,
-          lastUpdate: now,
+          change24h: variation,
+          lastUpdate: new Date()
         };
-      });
-    });
+      })
+    );
   }
 
-  updateQuantity1(id : string, amount: number){
-    this.coins.update(list => 
-        list.map(coin =>
-            coin.id === id 
-            ? {...coin, quantity: coin.quantity+amount}
-            :coin
-
-        ))
-  }
+  
     
 }
   
