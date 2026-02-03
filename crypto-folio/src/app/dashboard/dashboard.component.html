@@ -1,1 +1,4 @@
 <p>dashboard works!</p>
+<h1 [class.whale-alert]="crypto.isRich()">
+  {{ crypto.totalPortfolio() | currency:'EUR' }}
+</h1>
