@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-
+import { Component, output, input, model } from '@angular/core';
+import { Coin } from '../models/crypto.model';
 @Component({
   selector: 'app-crypto-card',
   standalone: true,
@@ -8,5 +8,8 @@ import { Component } from '@angular/core';
   styleUrl: './crypto-card.component.css'
 })
 export class CryptoCardComponent {
+coin= input.required<Coin>();
+
+updateQuantity= output<number>();
 
 }
