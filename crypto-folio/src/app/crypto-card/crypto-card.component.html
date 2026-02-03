@@ -1,10 +1,10 @@
-<div>
+<div class="coin-card">
     <h1>{{coin.name | uppercase}} </h1>
     <p >Prix: {{ coin.price | currency:'USD'}}</p>
     <p>Variation 24h: {{coin.change24h | percent:'2.0-0'}} </p>
     <p>Quantité:{{coin.quantity | number: '1.1-4'}}</p>
-    <p>Derniere MAJ: {{coin.lastUpdate | date: 'HH-mm-ss'}}</p>
-    <div>
+    <p class="date">Derniere MAJ: {{coin.lastUpdate | date: 'HH-mm-ss'}}</p>
+    <div class="actions">
         <button (click)="updateQuantity.emit(+1)">Acheter</button>
         <button (click)="updateQuantity.emit(-1)">Vendre</button>
     </div>
