@@ -46,6 +46,17 @@ export class CryptoService{
       return next;
     });
   }
+
+  updateQuantity1(id : string, amount: number){
+    this.coins.update(list => 
+        list.map(coin =>
+            coin.id === id 
+            ? {...coin, quantity: coin.quantity+amount}
+            :coin
+
+        ))
+  }
+    
 }
 
 
